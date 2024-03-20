@@ -1,5 +1,7 @@
 package Two_Pointers;
 
+
+//Brute Force
 class Solution {
     public boolean isPalindrome(String s) {
         boolean ispal = false;
@@ -22,5 +24,31 @@ class Solution {
         }
 
         return ispal;
+    }
+}
+
+//Using Two-Pointers
+class Solution {
+    public boolean isPalindrome(String s) {
+        int start = 0;
+        int end = s.length() - 1;
+
+        while(start <= end){
+            char currStart = s.charAt(start);
+            char currEnd = s.charAt(end);
+
+            if(!Character.isLetterOrDigit(currStart)){
+                start++;
+            }else if(!Character.isLetterOrDigit(currEnd)){
+                end--;
+            }else if(Character.toLowerCase(currStart) == Character.toLowerCase(currEnd)){
+                start++;
+                end--;
+            }else{
+                return false;
+            }
+        }
+
+        return true;
     }
 }
